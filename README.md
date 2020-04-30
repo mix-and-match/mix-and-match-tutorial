@@ -20,3 +20,13 @@ booktitle = {Proceedings of the IEEE international conference on computer vision
 year = {2020}
 }
 ```
+
+## Running the code
+To train the model, run:
+```
+python3 train.py
+```
+To sample given the trained model, run:
+```
+python3 sample.py
+```

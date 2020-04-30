@@ -34,4 +34,15 @@ python3 sample.py
 ## Tutorial: Explaining how Mix-and-Match works!
 
 ### Mix-and-Match VAE class
-In this section, we explain different bits and pieces of [model.py](model.py)
+In this section, we explain different bits and pieces of [model.py](model.py). We first define the encoders and the decoder we used in this model. We have two encoders, one for the data that we one to learn the distribution of and one for the conditioning signal. Here is how we define the [data encoder](https://github.com/mix-and-match/mix-and-match-tutorial/blob/master/model.py#L17):
+```
+self.data_encoder = nn.Sequential(
+            nn.Linear(args.input_dim, args.input_dim // 2),
+            nn.BatchNorm1d(args.input_dim // 2),
+            nn.ReLU(),
+            nn.Linear(args.input_dim // 2, args.hidden_dim),
+            nn.BatchNorm1d(args.hidden_dim),
+            nn.ReLU(),
+        )  
+```
+This is a pretty simple network (based on fully connected layers) that maps a data of `args.input_dim` dimension to `args.hidden_dim`.  Note that the [encoder for the condition](https://github.com/mix-and-match/mix-and-match-tutorial/blob/master/model.py#L27) is completely identical to this network.

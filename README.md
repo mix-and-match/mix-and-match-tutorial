@@ -30,3 +30,8 @@ To sample given the trained model, run:
 ```
 python3 sample.py
 ```
+
+## Tutorial: Explaining how Mix-and-Match works!
+
+### Mix-and-Match VAE class
+In this section, we explain different bits and pieces of [model.py](model.py)

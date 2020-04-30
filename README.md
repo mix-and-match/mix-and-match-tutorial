@@ -33,6 +33,8 @@ python3 sample.py
 
 ## Tutorial: Explaining how Mix-and-Match works!
 
+![Sampling and Resampling](samples/sampling_resampling.png)
+
 ### Mix-and-Match VAE class
 In this section, we explain different bits and pieces of [model.py](model.py). We first define the encoders and the decoder we used in this model. We have two encoders, one for the data that we one to learn the distribution of and one for the conditioning signal. Here is how we define the [data encoder](https://github.com/mix-and-match/mix-and-match-tutorial/blob/master/model.py#L17):
 ```

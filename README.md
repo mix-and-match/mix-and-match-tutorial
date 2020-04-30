@@ -7,3 +7,16 @@
 
 ## Task: Conditional image completion.
 In this experiment, the goal is to complete MNIST digits given partial observations. Note that the conditioning signal is strong enough such that a deterministic model can generate a digit image given the condition.
+
+
+## Citation
+If you find this work useful in your own research, please consider citing:
+
+```
+@inproceedings{mix-and-match-perturbation,
+author={Aliakbarian, Sadegh and Saleh, Fatemeh Sadat and Salzmann, Mathieu and Petersson, Lars and Gould, Stephen},
+title = {A Stochastic Conditioning Scheme for Diverse Human Motion Prediction},
+booktitle = {Proceedings of the IEEE international conference on computer vision},
+year = {2020}
+}
+```

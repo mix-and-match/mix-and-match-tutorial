@@ -1,8 +1,8 @@
 # A Tutorial on Mix-and-Match Perturbation 
 
-***Note 1: Due to IP issues, we are not able to release the code for human motion prediction at the moment. As soon as IP issues resolve, we will update the repo with motion prediction code.***
+*Note 1: Due to IP issues, we are not able to release the code for human motion prediction at the moment. As soon as IP issues resolve, we will update the repo with motion prediction code.*
 
-***Note 2: This is an example of Mix-and-Match perturbation on MNIST dataset. This code contains all the building blocks of Mix-and-Match.***
+***Note 2: This is an example of Mix-and-Match perturbation on MNIST dataset. This code contains all the building blocks of Mix-and-Match, so, it is fairly straightforward to use it in different problems/projects.***
 
 
 ## Task: Conditional image completion.
@@ -70,4 +70,20 @@ h = self.data_encoder(data)
 sampled_data = h[:, self.sampled_indices]
 complementary_data = h[:, self.complementary_indices]        
 ```
-Note, we do exactly the same for computing a representation out of the [conditioning signal](https://github.com/mix-and-match/mix-and-match-tutorial/blob/master/model.py#L52).
+Note, we do exactly the same for computing a representation out of the [conditioning signal](https://github.com/mix-and-match/mix-and-match-tutorial/blob/master/model.py#L52). As can be seen, after encoding the data, we return both representation correspond to `sampled_indices` and the representation corresponds to `complementary_indices` computed in the **Sampling** step.
+
+
+To [condition the encoder](https://github.com/mix-and-match/mix-and-match-tutorial/blob/master/model.py#L74), we perform Resampling as opposed to concatenation (as in standard VAE).
+
+First, we create a new vector of size `hidden_dim = sampled_indices + complementary_indices`. This variable will contain the result of resampling operation, acting as the input to the VAE encoder.
+```
+fusion = torch.zeros(sampled_data.shape[0], sampled_data.shape[1] + complementary_condition.shape[1]).to(self.args.device)
+```
+Then, to fill in this representation, we borrow the values of the input data representation that corresponds to the sampled indices and put them in the sampled indices. Similarly, we borrow the values of the conditioning signal corresponds ot the complementary set of indices and put them in the complementary set of indices.
+```
+fusion[:, self.sampled_indices] = sampled_data
+fusion[:, self.complementary_indices] = complementary_condition
+```
+Then, the fusion is being fed to the VAE's encoder. That can be simply computing the approximate posterior and sampling from that using the reparametrization trick.
+
+*Note: We do almost the same for the [Decoder](https://github.com/mix-and-match/mix-and-match-tutorial/blob/master/model.py#L95), except for the fact that we use the complementary_latent and sampled_condition. We then use the resulting representation to generate/reconstruct the data.*

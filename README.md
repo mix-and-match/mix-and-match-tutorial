@@ -1,9 +1,9 @@
 # A Tutorial on Mix-and-Match Perturbation 
 
-***Note: This is an example of Mix-and-Match perturbation on MNIST dataset. This code contains all the building blocks of Mix-and-Match, so, it is fairly straightforward to use it in different problems/projects. We will soon update the code for human motion prediction.***
+***Note: This is an example of Mix-and-Match perturbation on MNIST dataset. This code contains all the building blocks of Mix-and-Match, so, it is fairly straightforward to use it in different tasks. We will soon update the code for human motion prediction.***
 
 
-## Task: Conditional image completion.
+## Toy Example: Conditional image completion.
 In this experiment, the goal is to complete MNIST digits given partial observations. Note that the conditioning signal is strong enough such that a deterministic model can generate a digit image given the condition.
 
 

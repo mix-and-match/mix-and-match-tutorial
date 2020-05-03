@@ -1,5 +1,9 @@
 # A Tutorial on Mix-and-Match Perturbation 
 
+Mix-and-Match implementation, based on:
+
+Sadegh Aliakbarian, Fatemeh Saleh, Mathieu Salzmann, Lars Petersson, Stephen Gould, ["A Schotasctic Conditioning Scheme for Diverse Human Motion Prediction"](https://mix-and-match.github.io/), CVPR 2020.
+
 ***Note: This is an example of Mix-and-Match perturbation on MNIST dataset. This code contains all the building blocks of Mix-and-Match, so, it is fairly straightforward to use it in different tasks. We will soon update the code for human motion prediction.***
 
 
